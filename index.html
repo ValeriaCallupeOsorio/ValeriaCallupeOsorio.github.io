@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jezzamine Valeria Callupe Osorio | Portfolio</title>
+    <style>
+        /* --- PALETA DE COLORES Y VARIABLES --- */
+        :root {
+            --primary-dark: #1e3a5f;   /* Azul marino profundo (Sidebar) */
+            --primary-med: #2c5282;    /* Azul medio (Hover, bordes) */
+            --accent: #4299e1;         /* Azul brillante (Botones, iconos) */
+            --bg-main: #f0f4f8;        /* Gris-azulado muy claro (Fondo general) */
+            --card-bg: #ffffff;        /* Blanco (Paneles) */
+            --text-dark: #2d3748;      /* Gris oscuro (Textos principales) */
+            --text-light: #718096;     /* Gris medio (Textos secundarios) */
+            --border: #e2e8f0;         /* Gris claro (Bordes) */
+            --success: #48bb78;        /* Verde (Logros) */
+            --warning: #ed8936;        /* Naranja (Destacados) */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- LAYOUT DASHBOARD --- */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background: var(--primary-dark);
+            color: white;
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            width: 260px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 20px;
+        }
+
+        .nav-menu { list-style: none; flex: 1; }
+        .nav-menu li { margin-bottom: 5px; }
+        
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: #cbd5e0;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background: var(--primary-med);
+            color: white;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #a0aec0;
+            text-align: center;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: 260px;
+            padding: 30px 40px;
+        }
+
+        /* Header con selector de idioma */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .top-header h1 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+        }
+
+        .lang-toggle {
+            display: flex;
+            background: var(--bg-main);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 2px 4px rgba(66, 153, 225, 0.3);
+        }
+
+        /* --- GRID DE PANELES --- */
+        .panels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .panel {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .panel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-main);
+        }
+
+        .panel-icon {
+            font-size: 1.2rem;
+            background: var(--accent);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .panel-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        /* --- ESTILOS INTERNOS DE PANELES --- */
+        .summary-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        .info-row strong { color: var(--primary-dark); min-width: 80px; }
+        .info-row a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .info-row a:hover { text-decoration: underline; }
+
+        .project-item {
+            background: var(--bg-main);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .project-item:last-child { margin-bottom: 0; }
+        .project-item h4 { color: var(--primary-dark); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
+        .project-item .meta { font-size: 0.8rem; color: var(--text-light); margin-bottom: 8px; }
+        .project-item p { font-size: 0.9rem; margin-bottom: 10px; }
+        
+        .btn-link {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-link:hover { background: var(--primary-med); }
+
+        .badge {
+            background: var(--warning);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .badge.silver { background: #a0aec0; }
+
+        .skill-group { margin-bottom: 15px; }
+        .skill-group h4 { font-size: 0.9rem; color: var(--primary-med); margin-bottom: 8px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag {
+            background: var(--bg-main);
+            color: var(--text-dark);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        /* --- CONTROL DE IDIOMA (CSS PURO) --- */
+        .lang-en { display: none; }
+        body.show-en .lang-es { display: none; }
+        body.show-en .lang-en { display: block; }
+        body.show-en span.lang-en, body.show-en a.lang-en { display: inline; }
+        body.show-en div.lang-en { display: block; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .sidebar { position: relative; width: 100%; height: auto; }
+            .main-content { margin-left: 0; padding: 20px; }
+            .panels-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="show-es">
+
+    <div class="dashboard">
+        <!-- BARRA LATERAL (SIDEBAR) -->
+        <aside class="sidebar">
+            <div class="logo">JVCO</div>
+            <ul class="nav-menu">
+                <li><a href="#perfil"><span></span> <span class="lang-es">Perfil</span><span class="lang-en">Profile</span></a></li>
+                <li><a href="#proyectos"><span>🚀</span> <span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></a></li>
+                <li><a href="#educacion"><span>🎓</span> <span class="lang-es">Educación</span><span class="lang-en">Education</span></a></li>
+                <li><a href="#habilidades"><span>💡</span> <span class="lang-es">Habilidades</span><span class="lang-en">Skills</span></a></li>
+                <li><a href="#logros"><span></span> <span class="lang-es">Logros</span><span class="lang-en">Achievements</span></a></li>
+                <li><a href="#contacto"><span>📧</span> <span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a></li>
+            </ul>
+            <div class="sidebar-footer">
+                © 2026 Jezzamine Valeria Callupe Osorio
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            
+            <!-- HEADER SUPERIOR -->
+            <div class="top-header">
+                <h1><span class="lang-es">Portafolio Profesional</span><span class="lang-en">Professional Portfolio</span></h1>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+                    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+                </div>
+            </div>
+
+            <div class="panels-grid">
+                
+                <!-- PANEL 1: RESUMEN PROFESIONAL -->
+                <div class="panel" id="perfil" style="grid-column: span 2;">
+                    <div class="panel-header">
+                        <div class="panel-icon">👋</div>
+                        <h2 class="panel-title"><span class="lang-es">Resumen Profesional</span><span class="lang-en">Professional Summary</span></h2>
+                    </div>
+                    <div class="summary-text">
+                        <p class="lang-es">
+                            ¡Hola, Builders! 👋 Soy Jezzamine Valeria Callupe Osorio. Estudiante de Ingeniería Informática en la Universidad Peruana Cayetano Heredia (UPCH) | Lima, Perú.<br><br>
+                            No solo escribo código; construyo soluciones con propósito. Mi pasión reside en la intersección del desarrollo de software, la Inteligencia Artificial, la ciberseguridad, la gestión y la tecnología blockchain. Me especializo en traducir problemas complejos en productos digitales escalables. Mi enfoque es estratégico y de impacto social: busco que la tecnología resuelva brechas tangibles, priorizando la inclusión financiera y el Tech4Good (tecnología aplicada al bien social).<br><br>
+                            En entornos colaborativos aporto una visión analítica, creatividad y una ejecución ágil. Considero firmemente que la tecnología más poderosa es aquella que empodera a las personas y opera bajo principios de sostenibilidad, optimizando recursos y generando un impacto positivo y medible en nuestro entorno.<br><br>
+                            ¿Tienes un reto o una idea para resolver una problemática crítica? Conectemos y construyamos soluciones que generen valor real.
+                        </p>
+                        <p class="lang-en">
+                            Hello, Builders!  I am Jezzamine Valeria Callupe Osorio. Computer Engineering student at Universidad Peruana Cayetano Heredia (UPCH) | Lima, Peru.<br><br>
+                            I don't just write code; I build solutions with purpose. My passion lies at the intersection of software development, Artificial Intelligence, cybersecurity, management, and blockchain technology. I specialize in translating complex problems into scalable digital products. My approach is strategic and socially impactful: I seek to use technology to bridge tangible gaps, prioritizing financial inclusion and Tech4Good (technology applied for social good).<br><br>
+                            In collaborative environments, I bring an analytical vision, creativity, and agile execution. I firmly believe that the most powerful technology is that which empowers people and operates under principles of sustainability, optimizing resources and generating a positive, measurable impact on our environment.<br><br>
+                            Do you have a challenge or an idea to solve a critical issue? Let's connect and build solutions that generate real value.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PANEL 2: PROYECTOS -->
+                <div class="panel" id="proyectos" style="grid-column: span 2;">
+                    <div class="panel-header">
+                        <div class="panel-icon">🚀</div>
+                        <h2 class="panel-title"><span class="lang-es">Proyectos Destacados</span><span class="lang-en">Featured Projects</span></h2>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h4>EcoXport <span class="badge">🥇 1er Lugar / 1st Place</span></h4>
+                        <div class="meta">Build on Stellar Chile Ideatón | Feb - Mar 2026</div>
+                        <p class="lang-es">Aplicación financiera que elimina barreras para pequeños agricultores peruanos. Uso de Blockchain (Stellar) para reducir tiempos de transacción de semanas a segundos.</p>
+                        <p class="lang-en">Financial application eliminating barriers for small Peruvian farmers. Using Stellar Blockchain to reduce transaction times from weeks to seconds.</p>
+                        <a href="https://v0-star-remit-web3-app-2.vercel.app/?_vercel_share=sXCzTGdpAGkuC5P3bO9uYPB0zLnwPNLX" target="_blank" class="btn-link"><span class="lang-es">Ver Demo</span><span class="lang-en">View Demo</span></a>
+                    </div>
+
+                    <div class="project-item">
+                        <h4>KusiX <span class="badge silver">🥈 2do Lugar / 2nd Place</span></h4>
+                        <div class="meta">Emprende Cayetano - Reto CREO+ | Feb - Mar 2026</div>
+                        <p class="lang-es">Web-app con QR que optimiza la ruta clínica de pacientes universitarios en tiempo real usando gamificación y Nudge Theory.</p>
+                        <p class="lang-en">QR web-app optimizing the clinical route of university patients in real-time using gamification and Nudge Theory.</p>
+                        <a href="https://roaring-tapioca-f68f5f.netlify.app/#paciente" target="_blank" class="btn-link"><span class="lang-es">Ver PWA</span><span class="lang-en">View PWA</span></a>
+                    </div>
+
+                    <div class="project-item">
+                        <h4>Wisteria</h4>
+                        <div class="meta">L'Oréal Brandstorm 2026 | Feb - Abr 2026</div>
+                        <p class="lang-es">Dispositivo de fragancias de lujo con microdifusión dactilar personalizada. Lector biométrico y tecnología piezoeléctrica.</p>
+                        <p class="lang-en">Luxury fragrance device with personalized fingerprint microdiffusion. Biometric reader and piezoelectric technology.</p>
+                        <a href="https://claude.ai/public/artifacts/d58b0428-3be6-41f0-9ad0-9d02dff508c2" target="_blank" class="btn-link"><span class="lang-es">Ver Proyecto</span><span class="lang-en">View Project</span></a>
+                    </div>
+                </div>
+
+                <!-- PANEL 3: EDUCACIÓN -->
+                <div class="panel" id="educacion">
+                    <div class="panel-header">
+                        <div class="panel-icon">🎓</div>
+                        <h2 class="panel-title"><span class="lang-es">Educación</span><span class="lang-en">Education</span></h2>
+                    </div>
+                    <div class="project-item">
+                        <h4>UPCH</h4>
+                        <div class="meta">2025 - <span class="lang-es">Presente</span><span class="lang-en">Present</span></div>
+                        <p class="lang-es">Ingeniería Informática. Promedio: 15</p>
+                        <p class="lang-en">Computer Engineering. GPA: 15</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Aspire Institute</h4>
+                        <div class="meta">Harvard Alumni | 2026</div>
+                        <p class="lang-es">Programa Global de Liderazgo. Proyecto: Raíces Digitales.</p>
+                        <p class="lang-en">Global Leadership Program. Project: Digital Roots.</p>
+                    </div>
+                </div>
+
+                <!-- PANEL 4: HABILIDADES -->
+                <div class="panel" id="habilidades">
+                    <div class="panel-header">
+                        <div class="panel-icon">💡</div>
+                        <h2 class="panel-title"><span class="lang-es">Habilidades</span><span class="lang-en">Skills</span></h2>
+                    </div>
+                    <div class="skill-group">
+                        <h4><span class="lang-es">Tecnología</span><span class="lang-en">Tech Stack</span></h4>
+                        <div class="tags">
+                            <span class="tag">Python</span><span class="tag">Stellar</span><span class="tag">Blockchain</span><span class="tag">Web Dev</span><span class="tag">Figma</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4><span class="lang-es">Idiomas</span><span class="lang-en">Languages</span></h4>
+                        <div class="tags">
+                            <span class="tag"><span class="lang-es">Español (Nativo)</span><span class="lang-en">Spanish (Native)</span></span>
+                            <span class="tag"><span class="lang-es">Inglés (Profesional)</span><span class="lang-en">English (Professional)</span></span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4><span class="lang-es">Metodologías</span><span class="lang-en">Methodologies</span></h4>
+                        <div class="tags">
+                            <span class="tag">Design Thinking</span><span class="tag">Agile</span><span class="tag">Nudge Theory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 5: LOGROS -->
+                <div class="panel" id="logros">
+                    <div class="panel-header">
+                        <div class="panel-icon">🏆</div>
+                        <h2 class="panel-title"><span class="lang-es">Logros</span><span class="lang-en">Achievements</span></h2>
+                    </div>
+                    <div class="project-item">
+                        <h4>Impact Bootcamp (BAF) <span class="badge">🥇 1er Lugar</span></h4>
+                        <div class="meta">2026</div>
+                        <p class="lang-es">1er lugar en simulación de hackathon blockchain.</p>
+                        <p class="lang-en">1st place in blockchain hackathon simulation.</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>Aspire Moderator</h4>
+                        <div class="meta">42 hrs certificadas</div>
+                        <p class="lang-es">Moderadora global para 30,000+ participantes.</p>
+                        <p class="lang-en">Global moderator for 30,000+ participants.</p>
+                    </div>
+                </div>
+
+                <!-- PANEL 6: CONTACTO -->
+                <div class="panel" id="contacto">
+                    <div class="panel-header">
+                        <div class="panel-icon">📧</div>
+                        <h2 class="panel-title"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></h2>
+                    </div>
+                    <div class="info-row"><strong>Email:</strong> <a href="mailto:jezzaminecallupe@gmail.com">jezzaminecallupe@gmail.com</a></div>
+                    <div class="info-row"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jezzamine-valeria-callupe-osorio-1b29923a0" target="_blank"><span class="lang-es">Ver Perfil</span><span class="lang-en">View Profile</span></a></div>
+                    <div class="info-row"><strong>GitHub:</strong> <a href="https://github.com/ValeriaCallupeOsorio" target="_blank">ValeriaCallupeOsorio</a></div>
+                    <div class="info-row"><strong>Web:</strong> <a href="https://valeriacallupeosorio.github.io" target="_blank">valeriacallupeosorio.github.io</a></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            // Cambiar clase del body para mostrar/ocultar idiomas
+            if (lang === 'en') {
+                document.body.classList.add('show-en');
+                document.body.classList.remove('show-es');
+            } else {
+                document.body.classList.add('show-es');
+                document.body.classList.remove('show-en');
+            }
+            
+            // Actualizar botones activos
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+    </script>
+</body>
+</html>
