@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jezzamine Valeria Callupe Osorio | Portfolio</title>
+    <title>Jezzamine Callupe | Ingeniería Informática, Tech4Good</title>
     <style>
-        /* --- PALETA DE COLORES Y VARIABLES --- */
         :root {
-            --primary-dark: #1e3a5f;   /* Azul marino profundo (Sidebar) */
-            --primary-med: #2c5282;    /* Azul medio (Hover, bordes) */
-            --accent: #4299e1;         /* Azul brillante (Botones, iconos) */
-            --bg-main: #f0f4f8;        /* Gris-azulado muy claro (Fondo general) */
-            --card-bg: #ffffff;        /* Blanco (Paneles) */
-            --text-dark: #2d3748;      /* Gris oscuro (Textos principales) */
-            --text-light: #718096;     /* Gris medio (Textos secundarios) */
-            --border: #e2e8f0;         /* Gris claro (Bordes) */
-            --success: #48bb78;        /* Verde (Logros) */
-            --warning: #ed8936;        /* Naranja (Destacados) */
+            --primary-dark: #1e3a5f;
+            --primary-med: #2c5282;
+            --accent: #4299e1;
+            --bg-main: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --success: #48bb78;
+            --warning: #ed8936;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,14 +27,12 @@
             line-height: 1.6;
         }
 
-        /* --- LAYOUT DASHBOARD --- */
         .dashboard {
             display: grid;
             grid-template-columns: 260px 1fr;
             min-height: 100vh;
         }
 
-        /* --- SIDEBAR --- */
         .sidebar {
             background: var(--primary-dark);
             color: white;
@@ -87,13 +84,11 @@
             text-align: center;
         }
 
-        /* --- MAIN CONTENT --- */
         .main-content {
             margin-left: 260px;
             padding: 30px 40px;
         }
 
-        /* Header con selector de idioma */
         .top-header {
             display: flex;
             justify-content: space-between;
@@ -135,7 +130,6 @@
             box-shadow: 0 2px 4px rgba(66, 153, 225, 0.3);
         }
 
-        /* --- GRID DE PANELES --- */
         .panels-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -183,7 +177,6 @@
             font-weight: 700;
         }
 
-        /* --- ESTILOS INTERNOS DE PANELES --- */
         .summary-text {
             color: var(--text-dark);
             font-size: 0.95rem;
@@ -248,14 +241,12 @@
             border: 1px solid var(--border);
         }
 
-        /* --- CONTROL DE IDIOMA (CSS PURO) --- */
         .lang-en { display: none; }
         body.show-en .lang-es { display: none; }
         body.show-en .lang-en { display: block; }
         body.show-en span.lang-en, body.show-en a.lang-en { display: inline; }
         body.show-en div.lang-en { display: block; }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .dashboard { grid-template-columns: 1fr; }
             .sidebar { position: relative; width: 100%; height: auto; }
@@ -267,7 +258,6 @@
 <body class="show-es">
 
     <div class="dashboard">
-        <!-- BARRA LATERAL (SIDEBAR) -->
         <aside class="sidebar">
             <div class="logo">JVCO</div>
             <ul class="nav-menu">
@@ -283,10 +273,7 @@
             </div>
         </aside>
 
-        <!-- CONTENIDO PRINCIPAL -->
         <main class="main-content">
-            
-            <!-- HEADER SUPERIOR -->
             <div class="top-header">
                 <h1><span class="lang-es">Portafolio Profesional</span><span class="lang-en">Professional Portfolio</span></h1>
                 <div class="lang-toggle">
@@ -296,8 +283,6 @@
             </div>
 
             <div class="panels-grid">
-                
-                <!-- PANEL 1: RESUMEN PROFESIONAL -->
                 <div class="panel" id="perfil" style="grid-column: span 2;">
                     <div class="panel-header">
                         <div class="panel-icon">👋</div>
@@ -319,7 +304,6 @@
                     </div>
                 </div>
 
-                <!-- PANEL 2: PROYECTOS -->
                 <div class="panel" id="proyectos" style="grid-column: span 2;">
                     <div class="panel-header">
                         <div class="panel-icon">🚀</div>
@@ -327,7 +311,7 @@
                     </div>
                     
                     <div class="project-item">
-                        <h4>EcoXport <span class="badge">🥇 1er Lugar / 1st Place</span></h4>
+                        <h4>EcoXport <span class="badge"> 1er Lugar / 1st Place</span></h4>
                         <div class="meta">Build on Stellar Chile Ideatón | Feb - Mar 2026</div>
                         <p class="lang-es">Aplicación financiera que elimina barreras para pequeños agricultores peruanos. Uso de Blockchain (Stellar) para reducir tiempos de transacción de semanas a segundos.</p>
                         <p class="lang-en">Financial application eliminating barriers for small Peruvian farmers. Using Stellar Blockchain to reduce transaction times from weeks to seconds.</p>
@@ -351,10 +335,9 @@
                     </div>
                 </div>
 
-                <!-- PANEL 3: EDUCACIÓN -->
                 <div class="panel" id="educacion">
                     <div class="panel-header">
-                        <div class="panel-icon">🎓</div>
+                        <div class="panel-icon"></div>
                         <h2 class="panel-title"><span class="lang-es">Educación</span><span class="lang-en">Education</span></h2>
                     </div>
                     <div class="project-item">
@@ -371,7 +354,6 @@
                     </div>
                 </div>
 
-                <!-- PANEL 4: HABILIDADES -->
                 <div class="panel" id="habilidades">
                     <div class="panel-header">
                         <div class="panel-icon">💡</div>
@@ -398,7 +380,6 @@
                     </div>
                 </div>
 
-                <!-- PANEL 5: LOGROS -->
                 <div class="panel" id="logros">
                     <div class="panel-header">
                         <div class="panel-icon">🏆</div>
@@ -418,7 +399,6 @@
                     </div>
                 </div>
 
-                <!-- PANEL 6: CONTACTO -->
                 <div class="panel" id="contacto">
                     <div class="panel-header">
                         <div class="panel-icon">📧</div>
@@ -429,14 +409,12 @@
                     <div class="info-row"><strong>GitHub:</strong> <a href="https://github.com/ValeriaCallupeOsorio" target="_blank">ValeriaCallupeOsorio</a></div>
                     <div class="info-row"><strong>Web:</strong> <a href="https://valeriacallupeosorio.github.io" target="_blank">valeriacallupeosorio.github.io</a></div>
                 </div>
-
             </div>
         </main>
     </div>
 
     <script>
         function setLang(lang) {
-            // Cambiar clase del body para mostrar/ocultar idiomas
             if (lang === 'en') {
                 document.body.classList.add('show-en');
                 document.body.classList.remove('show-es');
@@ -445,7 +423,6 @@
                 document.body.classList.remove('show-en');
             }
             
-            // Actualizar botones activos
             document.getElementById('btn-es').classList.toggle('active', lang === 'es');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
